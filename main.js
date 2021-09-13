@@ -14,7 +14,7 @@ const TGT2_PUBKEY = "AAsxTQ8q9KQfuvRDbD9tP5MrMzdAsC4n8x3n3Dc84UTt"
 const TGT2_AMOUNT = 100000
 const TGT3_PUBKEY = "CTtdDqVntRM1igfGTK9eXMBDFM9ho4XQpjLSsrusWQRc"
 const TGT3_AMOUNT = 30000
-const transfer = async (tgt_pub, tgt_amount) => {
+const transfer = async (symbol, tgt_pub, tgt_amount) => {
   console.log('--------------------------------------------------------------')
   var connection = new web3.Connection(web3.clusterApiUrl(NETWORK));
   var fromWallet = web3.Keypair.fromSecretKey(MASTER_WALLET_SECRET_KEY);
@@ -51,12 +51,12 @@ const transfer = async (tgt_pub, tgt_amount) => {
     transaction,
     [fromWallet]
   );
-  console.log("SIGNATURE", signature);
+  console.log(symbol, signature);
   console.log("SUCCESS");
 }
 
 cron.schedule("0 */1 * * * *", function() {
-  transfer(TGT1_PUBKEY, TGT1_AMOUNT)
-  transfer(TGT2_PUBKEY, TGT2_AMOUNT)
-  transfer(TGT3_PUBKEY, TGT3_AMOUNT)
+  transfer("SIGNATURE 1 ", TGT1_PUBKEY, TGT1_AMOUNT)
+  transfer("SIGNATURE 2 ", TGT2_PUBKEY, TGT2_AMOUNT)
+  transfer("SIGNATURE 3 ", TGT3_PUBKEY, TGT3_AMOUNT)
 })
