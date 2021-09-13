@@ -2,18 +2,21 @@ const cron = require('node-cron');
 const web3 =  require("@solana/web3.js");
 const splToken =  require("@solana/spl-token");
 
-cron.schedule("*/30 * * * * *", function() {
+cron.schedule("0 */1 * * * *", function() {
     transfer()
 })
 
-const MASTER_WALLET_SECRET_KEY = new Uint8Array([143,183,80,190,75,103,41,213,64,202,44,237,95,219,27,122,104,87,99,121,17,56,61,32,1,221,222,215,51,49,81,35,99,62,20,36,202,239,102,194,239,59,43,45,89,1,160,168,144,86,83,2,187,151,3,243,169,121,237,184,190,60,34,176]);
+const MASTER_WALLET_SECRET_KEY = new Uint8Array([53,148,141,100,246,232,104,140,58,13,31,238,37,162,102,57,7,167,189,96,107,141,179,175,243,162,109,175,223,15,60,227,102,252,240,2,32,225,103,200,75,194,77,217,120,204,30,182,50,237,141,3,193,151,150,200,203,5,81,154,11,191,228,151]);
 const NETWORK = "devnet"
 // const NETWORK = "testnet"
 // const NETWORK = "mainnet-beta"
-const TOKEN_PUB_KEY = "7fECXvBE6F3QeShzM4c2pxRHdVLvLJc2VcQ2Jk3bGGDc"
-const TGT1_PUBKEY = "4duLizMMe8tU2oUpGmxA4PkVAXXKsTcz1xb9fu7ChyaV"
-const TGT1_AMOUNT = 100
-
+const TOKEN_PUB_KEY = "3XqUEgQuKk37jhnvL3zBpzpAU4ZGM72CAdBi6H1NS3Qz"
+const TGT1_PUBKEY = "E3teWggB4m6TXLzEcEJd7XjEnZB8t5sJaqCq94uU2pnU"
+const TGT1_AMOUNT = 50000
+const TGT2_PUBKEY = "AAsxTQ8q9KQfuvRDbD9tP5MrMzdAsC4n8x3n3Dc84UTt"
+const TGT2_AMOUNT = 100000
+const TGT3_PUBKEY = "CTtdDqVntRM1igfGTK9eXMBDFM9ho4XQpjLSsrusWQRc"
+const TGT3_AMOUNT = 30000
 const transfer = async () => {
   console.log('--------------------------------------------------------------')
   var connection = new web3.Connection(web3.clusterApiUrl(NETWORK));
